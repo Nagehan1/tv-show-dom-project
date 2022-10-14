@@ -5,13 +5,12 @@ function setup() {
 
   document.getElementById("searchInput")
   .addEventListener("input",searchEpisode)
-   
 
-  
-}
+ }
 
 function makePageForEpisodes(episodeList) {
  const container = document.getElementById("episodes") 
+ 
 episodeList.forEach(episode => {
   const card = document.createElement("div")
   card.className ="card";
@@ -35,6 +34,9 @@ episodeList.forEach(episode => {
 });
 const count = document.getElementById("countDisplay")
 count.innerText =`displaying ${episodeList.length}/${getAllEpisodes().length} episode`
+
+select(episodeList)
+
 }
 function searchEpisode(){
   const searchInput =document.getElementById("searchInput").value
@@ -43,11 +45,23 @@ function searchEpisode(){
     return(episode.name.toLowerCase().includes(searchInput.toLowerCase()) 
     || episode.summary.toLowerCase().includes(searchInput.toLowerCase()) )
   })
+
  const container = document.getElementById("episodes")
  container.innerHTML = "";
  makePageForEpisodes(filteredEpisode) 
 
 }
-
+ 
+function select(episodes){
+  const shows = document.getElementById("selectShow")
+  shows.innerHTML =""
+  episodes.forEach(show =>{
+         
+    const option= document.createElement("option")
+    option.innerText =show.name
+    option.value =show.id
+    shows.appendChild(option)
+  })
+}
 
 window.onload = setup;
