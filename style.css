@@ -1,3 +1,109 @@
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "Dosis", sans-serif;
+  line-height: 1.6;
+  color: #666;
+  background: #f6f6f6;
+}
+body{
+  background-color: rgb(9, 253, 221) ;
+}
 #root {
-  color: red;
+  color:rgb(32, 35, 56);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+#episodes {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+h1 {
+  text-align: center;
+  padding: 1.5rem 2.5rem;
+  margin: 0 0 2rem 0;
+  font-size: 1.5rem;
+  color: rgb(155, 14, 124);
+  border: 1px solid rgb(9, 1, 53);
+  border-radius: 12px;
+  font-weight: bold;
+}
+
+img {
+  display: block;
+  margin: 1rem auto;
+  max-width: 100%;
+}
+
+p {
+  padding: 0 2.5rem 2.5rem;
+  margin: 0;
+}
+
+.codeAndScroll {
+  padding: 0 2.5rem 0.5rem 2.5rem;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.scrollToTop {
+  padding: 0px 10px;
+  cursor: pointer;
+}
+#controls {
+  margin-left: 1rem;
+}
+
+input,
+select,
+button,
+#countDisplay {
+  padding: 10px;
+  margin-right: 10px;
+}
+
+.card {
+  margin: 1rem;
+  background: rgb(247, 247, 179);
+  box-shadow: 2px 4px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.2s linear;
+}
+
+.card:hover {
+  box-shadow: 2px 8px 45px rgba(240, 160, 160, 0.15);
+  transform: translateY(-2px);
+}
+
+.card__title--show{
+    grid-area: title;
+    justify-self: flex-start;
+    align-self: flex-end;
+    font-size: 2em;
+  }
+
+  footer {
+    
+    bottom: 0;
+    width: 100%;
+    padding: 2em;
+    text-align: center;
+    font-size: 0.8em;
+    background-color: transparent;
+}
+
+@media screen and (min-width: 600px) {
+  .card {
+    flex: 1 1 calc(50% - 2rem);
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .card {
+    flex: 1 1 calc(33% - 2rem);
+  }
 }
