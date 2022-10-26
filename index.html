@@ -8,20 +8,20 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
   </head>
 
-  <body>
-        <div id="root">
-          <select id="selectShow" ></select>
-        <input id ="searchInput" type="text" placeholder="search"/> 
-        <span id="countDisplay"> </span>
-      <div id="episodes">
-      
-      </div>
-    </div>
-
-    <!-- Loads a provided function called getAllEpisodes() which returns all episodes -->
-    <script src="episodes.js"></script>
-
-    <!-- Loads YOUR javascript code -->
-    <script src="script.js"></script>
-  </body>
+<body>
+<div id="root">
+  <div id="controls">
+    <select id="showSelect"></select>
+    <select id="episodeSelect"></select>
+    <input id="searchInput" type="text" placeholder="your search term..." />
+    <span id="countDisplay">Displaying n episodes</span>
+  </div>
+  <div id="episodes"></div>
+</div>
+<script src="script.js"></script>
+</div>
+<script src="episodes.js"></script>
+<script src="script.js"></script>
+</body>
 </html>
+  
