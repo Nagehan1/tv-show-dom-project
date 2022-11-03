@@ -1,4 +1,4 @@
-function setup(){
+function setup() {
     let showList = [];
     fetch('https://api.tvmaze.com/shows')
         .then(response => response.json())
@@ -10,13 +10,13 @@ function setup(){
             makePageForEpisodes(showList);
             select(showList);
             selectEpisode()
-
-    }
+        }
     )
     search()
-  }
+}
 function makePageForEpisodes(episodeList) {
     const container = document.getElementById("episodes");
+    document.getElementById("countDisplay").innerText = `Displaying ${episodeList.length} / ${episodeList.length} episodes`;
     episodeList.forEach((episode) => {
         const card = document.createElement("div");
         card.className = "card";
@@ -42,19 +42,18 @@ function select(shows) {
         const option = document.createElement("option");
         option.innerText = episode.name;
         option.value = episode.id;
-        id=episode.id;
+        id = episode.id;
         select.appendChild(option);
     });
     select.addEventListener("change", (event) => {
-        const selectedEpisode = shows.find((episode) => episode.id == event.target.value);
-        const container = document.getElementById("episodes");
-        container.innerHTML = "";
-        makePageForEpisodes([selectedEpisode]);
-    }
+            const selectedEpisode = shows.find((episode) => episode.id == event.target.value);
+            const container = document.getElementById("episodes");
+            container.innerHTML = "";
+            makePageForEpisodes([selectedEpisode]);
+        }
     );
-
 }
-function selectEpisode(){
+function selectEpisode() {
     let episodeList = [];
     const select = document.getElementById("episodeSelect");
     const selectShow = document.getElementById("showSelect");
@@ -62,48 +61,43 @@ function selectEpisode(){
     fetch(`https://api.tvmaze.com/shows/${showId}/episodes`)
         .then(response => response.json())
         .then(data => {
-            episodeList = data;
+                episodeList = data;
                 console.log(data);
-            data.forEach((episode) => {
-                const option = document.createElement("option");
-                option.innerText = episode.name;
-                option.value = episode.id;
-                select.appendChild(option);
+                data.forEach((episode) => {
+                        const option = document.createElement("option");
+                        option.innerText = episode.name;
+                        option.value = episode.id;
+                        select.appendChild(option);
+                    }
+                );
             }
-            );
-        }
         );
     select.addEventListener("change", (event) => {
-        const selectedEpisode = episodeList.find((episode) => episode.id == event.target.value);
-        const container = document.getElementById("episodes");
-        container.innerHTML = "";
-        makePageForEpisodes([selectedEpisode]);
-
-    }
+            const selectedEpisode = episodeList.find((episode) => episode.id == event.target.value);
+            const container = document.getElementById("episodes");
+            container.innerHTML = "";
+            makePageForEpisodes([selectedEpisode]);
+        }
     );
-
-
-    }
-function search(){
+}
+function search() {
     fetch('https://api.tvmaze.com/shows')
         .then(response => response.json())
         .then(data => {
-            const search = document.getElementById("searchInput");
-            search.addEventListener("keyup", (event) => {
-                const searchValue = event.target.value.toLowerCase();
-                const filteredShows = data.filter((show) => {
-                    return (
-                        show.name.toLowerCase().includes(searchValue)
-                    );
-                });
-                const container = document.getElementById("episodes");
-                container.innerHTML = "";
-                makePageForEpisodes(filteredShows);
+                const search = document.getElementById("searchInput");
+                search.addEventListener("keyup", (event) => {
+                        const searchValue = event.target.value.toLowerCase();
+                        const filteredShows = data.filter((show) => {
+                            return (
+                                show.name.toLowerCase().includes(searchValue)
+                            );
+                        });
+                        const container = document.getElementById("episodes");
+                        container.innerHTML = "";
+                        makePageForEpisodes(filteredShows);
+                    }
+                );
             }
-            );
-        }
         );
 }
-
-
 window.onload = setup;
