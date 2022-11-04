@@ -62,7 +62,7 @@ function selectEpisode() {
         .then(response => response.json())
         .then(data => {
                 episodeList = data;
-                console.log(data);
+                // console.log(data);
                 data.forEach((episode) => {
                         const option = document.createElement("option");
                         option.innerText = episode.name;
