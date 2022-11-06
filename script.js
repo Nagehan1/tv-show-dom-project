@@ -21,25 +21,43 @@ function setup() {
 
 
 function makePageForEpisodes(episodeList) {
-    const container = document.getElementById("episodes");
-    document.getElementById("countDisplay").innerText = `Displaying ${episodeList.length} / ${episodeList.length} episodes`;
-    episodeList.forEach((episode) => {
-        const card = document.createElement("div");
-        card.className = "card";
-        const title = document.createElement("h1");
-        title.className = "title";
-        title.innerText = episode.name
-        card.appendChild(title);
-        const image = document.createElement("img");
-        image.className = "image";
-        image.src = episode.image.medium;
-        card.appendChild(image);
-        const summary = document.createElement("p");
-        summary.className = "summary";
-        summary.innerHTML = episode.summary;
-        card.appendChild(summary);
-        container.appendChild(card);
-    });
+  document.getElementById(
+    "countDisplay"
+  ).innerText = `Displaying ${episodeList.length} / ${episodeList.length} episodes`;
+  const container = document.getElementById("episodes");
+  episodeList.forEach((episode) => {
+    const card = document.createElement("div");
+    card.className = "card";
+    const title = document.createElement("h1");
+    title.className = "title";
+    title.innerText = episode.name;
+    card.appendChild(title);
+    let rate = document.createElement("p");
+    rate.innerHTML = `Rating: ${episode.rating.average}`;
+    card.appendChild(rate);
+    console.log(episodeList);
+    let genre = document.createElement("p");
+    genre.innerHTML = `Genre(s): ${episode.genres}`;
+    card.appendChild(genre);
+    console.log(episodeList);
+    let status = document.createElement("p");
+    status.innerHTML = `Status: ${episode.status}`;
+    card.appendChild(status);
+    console.log(episodeList);
+    let runTime = document.createElement("p");
+    runTime.innerHTML = `Runtime: ${episode.runtime}`;
+    card.appendChild(runTime);
+    console.log(episodeList);
+    const image = document.createElement("img");
+    image.className = "image";
+    image.src = episode.image.medium;
+    card.appendChild(image);
+    const summary = document.createElement("p");
+    summary.className = "summary";
+    summary.innerHTML = episode.summary;
+    card.appendChild(summary);
+    container.appendChild(card);
+  });
 }
 
 function select(shows) {
@@ -62,15 +80,14 @@ function select(shows) {
 
 
 }
+
 function clickAllShow(shows) {
-    const container = document.getElementById("back-toshows");
-    container.addEventListener("click", (event) => {
-        const container = document.getElementById("episodes");
-        container.innerHTML = "";
-        makePageForEpisodes(shows);
-    }
-    )
-    // ...
+  const container = document.getElementById("back-toshows");
+  container.addEventListener("click", (event) => {
+    const container = document.getElementById("episodes");
+    container.innerHTML = "";
+    makePageForEpisodes(shows);
+  });
 }
 
 function selectEpisode() {
